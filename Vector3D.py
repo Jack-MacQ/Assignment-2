@@ -128,35 +128,62 @@ of each triangle using the dot product and vector magnitudes.
 
 def triangle_area(a, b, c):
     """Return area of triangle with vertices a,b,c (Vector3D)."""
+    
+    # Form two side vectors from common vertex a
     ab = b - a
     ac = c - a
+
+    # Area = 1/2 |ab cross ac|
     return 0.5 * ab.cross(ac).magnitude()
+
 
 def angle_between(u, v):
     """Return angle (in radians) between vectors u and v."""
+    
+    # Compute product of magnitudes (denominator of cosine formula)
     denom = u.magnitude() * v.magnitude()
+
+    # Prevent division by zero if a zero-length vector is supplied
     if denom == 0.0:
         raise ValueError("Cannot compute angle with a zero-length vector.")
+
+    # Cosine formula: cos(theta) = (u dot v) / (|u||v|)
     cos_theta = u.dot(v) / denom
+
+    # Clamp value to [-1, 1] to avoid floating-point rounding errors
     cos_theta = max(-1.0, min(1.0, cos_theta))
+
+    # Return angle in radians
     return math.acos(cos_theta)
+
 
 def triangle_angles(a, b, c):
     """Return the 3 internal angles (in degrees) at vertices a,b,c."""
+
+    # Construct vectors representing each pair of sides meeting at each vertex
     ab = b - a
     ac = c - a
+
     ba = a - b
     bc = c - b
+
     ca = a - c
     cb = b - c
 
-    ang_a = math.degrees(angle_between(ab, ac))
-    ang_b = math.degrees(angle_between(ba, bc))
-    ang_c = math.degrees(angle_between(ca, cb))
+    # Compute each internal angle using the angle_between function
+    ang_a = math.degrees(angle_between(ab, ac))  # Angle at vertex A
+    ang_b = math.degrees(angle_between(ba, bc))  # Angle at vertex B
+    ang_c = math.degrees(angle_between(ca, cb))  # Angle at vertex C
+
     return ang_a, ang_b, ang_c
 
 
+# -----------------------------
 # Define the triangles
+# -----------------------------
+
+# Each triangle is stored as:
+# (name, vertex A, vertex B, vertex C)
 
 triangles = [
     (
@@ -177,13 +204,27 @@ triangles = [
     ),
 ]
 
-# Print results
+
+# -----------------------------
+# Compute and print results
+# -----------------------------
 
 for name, a, b, c in triangles:
+
+    # Compute triangle area
     area = triangle_area(a, b, c)
+
+    # Compute internal angles (in degrees)
     ang_a, ang_b, ang_c = triangle_angles(a, b, c)
 
+    # Output results
     print(f"\n{name}")
     print(f"  Vertices: A={a}, B={b}, C={c}")
     print(f"  Area = {area:.12f}")
-    print(f"  Angles (deg): A={ang_a:.6f}, B={ang_b:.6f}, C={ang_c:.6f} (sum={ang_a+ang_b+ang_c:.6f})")
+    print(
+        f"  Angles (deg): "
+        f"A={ang_a:.6f}, "
+        f"B={ang_b:.6f}, "
+        f"C={ang_c:.6f} "
+        f"(sum={ang_a+ang_b+ang_c:.6f})"
+    )

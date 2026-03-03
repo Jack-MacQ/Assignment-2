@@ -226,7 +226,7 @@ for name, a, b, c in triangles:
     print("-" * 40)
     print(f"{name}")
     print(f"Vertices: A={a}, B={b}, C={c}")
-    print(f"Area     = {area:.6f}")
+    print(f"Area     = {area:.2f}")
 
     print(
         f"Angles (deg): "

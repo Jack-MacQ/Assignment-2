@@ -67,7 +67,7 @@ class Vector3D:
 
 	def __str__(self) -> str:
         	"""Return a readable string representation."""
-	        return f"Vector3D({self.x}, {self.y}, {self.z})"
+	        return f"({self.x}, {self.y}, {self.z})"
 
 	def __repr__(self) -> str:
         	"""Return unambiguous representation."""
@@ -209,6 +209,12 @@ triangles = [
 # Compute and print results
 # -----------------------------
 
+print("\n" + "#" * 60)
+print(" " * 60)
+print("-" * 60)
+print("TASK 2: Triangle Areas and Internal Angles")
+print("-" * 60)
+
 for name, a, b, c in triangles:
 
     # Compute triangle area
@@ -216,15 +222,19 @@ for name, a, b, c in triangles:
 
     # Compute internal angles (in degrees)
     ang_a, ang_b, ang_c = triangle_angles(a, b, c)
+    
+    print("-" * 40)
+    print(f"{name}")
+    print(f"Vertices: A={a}, B={b}, C={c}")
+    print(f"Area     = {area:.6f}")
 
-    # Output results
-    print(f"\n{name}")
-    print(f"  Vertices: A={a}, B={b}, C={c}")
-    print(f"  Area = {area:.12f}")
     print(
-        f"  Angles (deg): "
-        f"A={ang_a:.6f}, "
-        f"B={ang_b:.6f}, "
-        f"C={ang_c:.6f} "
-        f"(sum={ang_a+ang_b+ang_c:.6f})"
+        f"Angles (deg): "
+        f"A={ang_a:.2f}, "
+        f"B={ang_b:.2f}, "
+        f"C={ang_c:.2f} "
+        f"(sum={ang_a + ang_b + ang_c:.2f})"
     )
+    print("-" * 40)
+
+print("\n" + "#" * 60)

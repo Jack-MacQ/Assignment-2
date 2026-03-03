@@ -212,9 +212,9 @@ triangles = [
 
 print("\n" + "#" * 60)
 print(" " * 60)
-print("-" * 60)
+print("=" * 60)
 print("TASK 2: Triangle Areas and Internal Angles")
-print("-" * 60)
+print("=" * 60)
 
 for name, a, b, c in triangles:
 
@@ -394,9 +394,11 @@ def run_task3(points, h=1e-6):
     print(" " * 60)
     print(" " * 60)
     print("#" * 60)
-    print("\n" + "-" * 60)
+    
+    print("\n" + "=" * 60)
     print("TASK 3: Hansen Vector Checks (numerical vs analytic)")
-    print("-" * 60)
+    print("=" * 60)
+    
     print("-" * 60)
     print(f"Step size h = {h:g}")
     print(f"|k| = pi = {K_MAG:.3f}")
@@ -430,26 +432,33 @@ def run_task3(points, h=1e-6):
         rhs_curlN = vec_scale(1.0 / K_MAG, Mv)
         rhs_curlM = vec_scale(1.0 / K_MAG, Nv)
 
-        print("\n" + "-" * 60)
+        print("\n" + "*" * 60)
         print(f"Point (x,y,z) = ({x:g}, {y:g}, {z:g})")
         print("-" * 60)
-
+	
+        print("-" * 60)
+        print("Divergence check:")
         print(f"div M (num) = {divM_num}")
         print(f"div N (num) = {divN_num}")
         print("Expected: div M = 0, div N = 0")
+        print("-" * 60)
 
         # Curl outputs
+        print("-" * 60)
+        print("Curl comparison:")
         print("\ncurl N (num) =", fmt_vec(curlN_num))
         print("curl N (an)  =", fmt_vec(curlN_an))
         print("M/|k| (RHS)  =", fmt_vec(rhs_curlN))
         print(f"||curlN_num - curlN_an|| = {vec_diff_norm(curlN_num, curlN_an):.2e}")
         print(f"||curlN_num - M/|k||     = {vec_diff_norm(curlN_num, rhs_curlN):.2f}")
+        print(" " * 60)
 
         print("\ncurl M (num) =", fmt_vec(curlM_num))
         print("curl M (an)  =", fmt_vec(curlM_an))
         print("N/|k| (RHS)  =", fmt_vec(rhs_curlM))
         print(f"||curlM_num - curlM_an|| = {vec_diff_norm(curlM_num, curlM_an):.2e}")
         print(f"||curlM_num - N/|k||     = {vec_diff_norm(curlM_num, rhs_curlM):.2f}")
+        print("*" * 60)
 
     print("\n" + "-" * 60)
     print(" " * 60)

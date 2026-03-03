@@ -74,3 +74,19 @@ class Vector3D:
         	    self.z * other.x - self.x * other.z,
         	    self.x * other.y - self.y * other.x,
         	)
+
+if __name__ == "__main__":
+    # Create example vectors
+    v1 = Vector3D(1, 2, 3)
+    v2 = Vector3D(4, 5, 6)
+
+    print("Vector v1:", v1)
+    print("Vector v2:", v2)
+
+    print("Magnitude of v1:", v1.magnitude())
+
+    print("v1 + v2 =", v1 + v2)
+    print("v1 - v2 =", v1 - v2)
+
+    print("Dot product:", v1.dot(v2))
+    print("Cross product:", v1.cross(v2))
